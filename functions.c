@@ -2,12 +2,10 @@
 
 /************************* PRINT CHAR *************************/
 
-
-
 /**
  * print_char - Prints a char
  *
- *   * @types: List of arguments
+ * @types: Lists of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: Width
@@ -33,7 +31,7 @@ int print_char(va_list types, char buffer[],
  * @types: List a of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
- * @width: get width
+ * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
  *
@@ -87,12 +85,12 @@ int print_string(va_list types, char buffer[],
 /************************* PRINT PERCENT SIGN *************************/
 
 /**
- * print_percent - Prints the percentage sign
+ * print_percent - Prints a percent sign
  *
  * @types: List of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
- * @width: get width
+ * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
  *
@@ -114,12 +112,12 @@ int print_percent(va_list types, char buffer[],
 /************************* PRINT INT *************************/
 
 /**
- * print_int - Prints int
+ * print_int - Print int
  *
- * @types: List of arguments
+ * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
- * @width: get width
+ * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
  *
@@ -147,30 +145,28 @@ int print_int(va_list types, char buffer[],
 		num = (unsigned long int)((-1) * n);
 		is_negative = 1;
 	}
-
 	while (num > 0)
 	{
 		buffer[i--] = (num % 10) + '0';
 		num /= 10;
 	}
 	i++;
-
 	return (write_number(is_negative, i, buffer, flags, width, precision, size));
 }
 
 /************************* PRINT BINARY *************************/
 
 /**
- * print_binary - Prints unsigned number
+ * print_binary - Prints an unsigned number
  *
  * @types: List of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
- * @width: gets width
+ * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
  *
- * Return: Number of char printed
+ * Return: Numbers of char printed.
  */
 
 int print_binary(va_list types, char buffer[],
@@ -194,17 +190,17 @@ int print_binary(va_list types, char buffer[],
 		m /= 2;
 		a[i] = (n / m) % 2;
 	}
-	for (i = 0, sum = 0, count = 0; i < 32; i++)
-	{
-		sum += a[i];
-		if (sum || i == 31)
+		for (i = 0, sum = 0, count = 0; i < 32; i++)
 		{
-			char z = '0' + a[i];
+			sum += a[i];
+			if (sum || i == 31)
+			{
+				char z = '0' + a[i];
 
-			write(1, &z, 1);
-			count++;
+				write(1, &z, 1);
+				count++;
+			}
 		}
-	}
-	return (count);
+		return (count);
 }
 
